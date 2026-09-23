@@ -6,6 +6,17 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-09-23
+
+### Fixed
+
+- Mouse clicks did nothing inside Teams. The Teams web app marks its loading screen
+  as a window-drag area (meant for Microsoft's own desktop app), which turned the whole
+  window into a drag handle. Pages can no longer declare drag areas; only the app's
+  title bar can.
+- When maximized, the title bar and page were laid out 32 px too wide, pushing part of
+  the close button off-screen.
+
 ## [1.0.0] - 2026-09-23
 
 ### Added

@@ -71,12 +71,23 @@ function deepLinkFromArgv(argv) {
   }
 }
 
+let layoutTimer = null;
+
 function layout() {
   if (!win || win.isDestroyed()) return;
-  const { width, height } = win.getContentBounds();
+  const [width, height] = win.getContentSize();
   const bar = win.isFullScreen() ? 0 : cfg.titleBarHeight;
   titleView.setBounds({ x: 0, y: 0, width, height: bar });
   teamsView.setBounds({ x: 0, y: bar, width, height: Math.max(0, height - bar) });
+}
+
+// On Linux, 'resize' can fire before the window reports its final size (notably
+// on maximize/restore), which would leave the views sized for the previous
+// state. Lay out now and again once the size has settled.
+function scheduleLayout() {
+  layout();
+  clearTimeout(layoutTimer);
+  layoutTimer = setTimeout(layout, 50);
 }
 
 function sendTitleState() {
@@ -173,7 +184,12 @@ function createMainWindow(initialUrl) {
   });
 
   teamsView = new WebContentsView({
-    webPreferences: { ...secureWebPreferences, partition: PARTITION, spellcheck: true },
+    webPreferences: {
+      ...secureWebPreferences,
+      partition: PARTITION,
+      spellcheck: true,
+      preload: path.join(PRELOAD, 'teams.js'),
+    },
   });
   teamsView.setBackgroundColor(backgroundColor());
 
@@ -228,10 +244,10 @@ function createMainWindow(initialUrl) {
 
   titleView.webContents.on('did-finish-load', sendTitleState);
 
-  win.on('resize', layout);
+  for (const ev of ['resize', 'maximize', 'unmaximize', 'restore', 'show', 'enter-full-screen', 'leave-full-screen']) {
+    win.on(ev, scheduleLayout);
+  }
   for (const ev of ['maximize', 'unmaximize', 'focus', 'blur']) win.on(ev, sendTitleState);
-  win.on('enter-full-screen', layout);
-  win.on('leave-full-screen', layout);
 
   win.on('close', (e) => {
     if (!quitting && tray) {

@@ -22,25 +22,24 @@ Tags containing a hyphen, such as `v1.1.0-beta.1`, are published as **pre-releas
 
 ### 1. Create the GitHub repository
 
-On github.com, create a new, empty repository named `teams-desktop`. Don't add a
+On github.com, create a new, empty repository named `microsoft-teams-linux-desktop-app`. Don't add a
 README, license or `.gitignore`: this project already has them.
 
-> The docs and `package.json` assume `github.com/asmsaiff/teams-desktop`. If your
-> username or repo name differs, replace `asmsaiff/teams-desktop` in `package.json`,
-> `README.md` and `scripts/release-notes.js`.
+> The docs and `package.json` point to `github.com/asmsaiff/microsoft-teams-linux-desktop-app`. If you
+> rename the repository, update that path in `package.json`, `README.md` and
+> `scripts/release-notes.js`.
 
 ### 2. Push the code
 
 ```bash
 cd ~/Documents/Projects/teams
-git branch -M main
 git add .
 git commit -m "Initial release"
-git remote add origin git@github.com:asmsaiff/teams-desktop.git
-git push -u origin main
+git remote add origin https://github.com/asmsaiff/microsoft-teams-linux-desktop-app.git
+git push -u origin master
 ```
 
-The **CI** workflow runs on every push to `main` and on every pull request. It
+The **CI** workflow runs on every push to `master` and on every pull request. It
 syntax-checks and packages the app, so problems show up before you tag a release.
 
 ### 3. Recommended repository settings
@@ -136,7 +135,7 @@ Download the `.deb` from the release page and install it once, as a final check.
 
 ## Fixing problems
 
-**The workflow failed before publishing.** Fix the problem on `main`, then move the
+**The workflow failed before publishing.** Fix the problem on `master`, then move the
 tag to the fixed commit and push it again:
 
 ```bash
@@ -184,5 +183,5 @@ The second check proves the file was built by this repository's release workflow
 from a tagged commit. It needs the GitHub CLI.
 
 ```bash
-gh attestation verify teams-desktop_1.1.0_amd64.deb --repo asmsaiff/teams-desktop
+gh attestation verify teams-desktop_1.1.0_amd64.deb --repo asmsaiff/microsoft-teams-linux-desktop-app
 ```

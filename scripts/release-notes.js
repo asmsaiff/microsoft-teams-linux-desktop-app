@@ -8,7 +8,7 @@ const path = require('node:path');
 
 const tag = process.argv[2] || '';
 const version = tag.replace(/^v/, '');
-const repo = process.env.GH_REPO || 'asmsaiff/teams-desktop';
+const repo = process.env.GH_REPO || 'asmsaiff/microsoft-teams-linux-desktop-app';
 
 const changelog = fs.readFileSync(path.join(__dirname, '..', 'CHANGELOG.md'), 'utf8');
 const lines = changelog.split('\n');

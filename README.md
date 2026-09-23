@@ -6,8 +6,8 @@
 
 A fast, hardened Microsoft Teams desktop app for Ubuntu Linux.
 
-[![Release](https://img.shields.io/github/v/release/asmsaiff/teams-desktop?sort=semver)](https://github.com/asmsaiff/teams-desktop/releases/latest)
-[![CI](https://github.com/asmsaiff/teams-desktop/actions/workflows/ci.yml/badge.svg)](https://github.com/asmsaiff/teams-desktop/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/asmsaiff/microsoft-teams-linux-desktop-app?sort=semver)](https://github.com/asmsaiff/microsoft-teams-linux-desktop-app/releases/latest)
+[![CI](https://github.com/asmsaiff/microsoft-teams-linux-desktop-app/actions/workflows/ci.yml/badge.svg)](https://github.com/asmsaiff/microsoft-teams-linux-desktop-app/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 </div>
@@ -21,7 +21,7 @@ defaults.
 
 ### Ubuntu / Debian (.deb, recommended)
 
-1. Open the [latest release](https://github.com/asmsaiff/teams-desktop/releases/latest).
+1. Open the [latest release](https://github.com/asmsaiff/microsoft-teams-linux-desktop-app/releases/latest).
 2. Download `teams-desktop_<version>_amd64.deb`.
 3. Install it:
 
@@ -44,7 +44,7 @@ sudo apt remove teams-desktop
 ### AppImage (portable, any distribution)
 
 Download `Teams-<version>-x86_64.AppImage` from the
-[latest release](https://github.com/asmsaiff/teams-desktop/releases/latest). Make it
+[latest release](https://github.com/asmsaiff/microsoft-teams-linux-desktop-app/releases/latest). Make it
 executable and run it:
 
 ```bash
@@ -64,7 +64,7 @@ sha256sum -c SHA256SUMS.txt --ignore-missing
 ```
 
 ```bash
-gh attestation verify teams-desktop_*_amd64.deb --repo asmsaiff/teams-desktop
+gh attestation verify teams-desktop_*_amd64.deb --repo asmsaiff/microsoft-teams-linux-desktop-app
 ```
 
 ## Requirements
@@ -99,8 +99,9 @@ gh attestation verify teams-desktop_*_amd64.deb --repo asmsaiff/teams-desktop
 
 ## Security
 
-- **Isolated web content**: Teams runs sandboxed with `contextIsolation`, no Node.js
-  access, and no scripts injected into the page.
+- **Isolated web content**: Teams runs sandboxed with `contextIsolation` and no
+  Node.js access. Its only preload adds one CSS rule (so the page can't turn the
+  window into a drag handle) and exposes nothing to the page.
 - **Chromium sandbox stays on**: the `.deb` installs an AppArmor profile instead of
   falling back to `--no-sandbox`.
 - **Microsoft-only navigation**: only Microsoft domains can load inside the app. Other
@@ -128,7 +129,7 @@ gh attestation verify teams-desktop_*_amd64.deb --repo asmsaiff/teams-desktop
   Dependabot keeps Electron, and so Chromium, up to date.
 
 Found a security problem? Please report it privately through
-[GitHub security advisories](https://github.com/asmsaiff/teams-desktop/security/advisories/new)
+[GitHub security advisories](https://github.com/asmsaiff/microsoft-teams-linux-desktop-app/security/advisories/new)
 rather than in a public issue.
 
 ## Configuration
@@ -183,8 +184,8 @@ rm -rf ~/.config/teams-desktop
 Requires Node.js 22.12 or newer.
 
 ```bash
-git clone https://github.com/asmsaiff/teams-desktop.git
-cd teams-desktop
+git clone https://github.com/asmsaiff/microsoft-teams-linux-desktop-app.git
+cd microsoft-teams-linux-desktop-app
 npm ci
 ```
 

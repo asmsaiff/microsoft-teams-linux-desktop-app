@@ -1,17 +1,17 @@
 {
   "name": "teams-desktop",
   "productName": "Teams",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fast, hardened Microsoft Teams desktop client for Linux",
   "main": "src/main/main.js",
   "desktopName": "teams-desktop.desktop",
-  "homepage": "https://github.com/asmsaiff/teams-desktop",
+  "homepage": "https://github.com/asmsaiff/microsoft-teams-linux-desktop-app",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/asmsaiff/teams-desktop.git"
+    "url": "git+https://github.com/asmsaiff/microsoft-teams-linux-desktop-app.git"
   },
   "bugs": {
-    "url": "https://github.com/asmsaiff/teams-desktop/issues"
+    "url": "https://github.com/asmsaiff/microsoft-teams-linux-desktop-app/issues"
   },
   "author": {
     "name": "Mint Media Services",
