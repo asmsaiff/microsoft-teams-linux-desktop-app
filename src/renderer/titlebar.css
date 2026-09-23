@@ -1,0 +1,62 @@
+:root {
+  --bg: #ebebeb;
+  --bg-blur: #f5f5f5;
+  --fg: #242424;
+  --fg-dim: #616161;
+  --hover: rgba(0, 0, 0, 0.07);
+  --accent: #5b5fc7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0a;
+    --bg-blur: #1f1f1f;
+    --fg: #ffffff;
+    --fg-dim: #adadad;
+    --hover: rgba(255, 255, 255, 0.08);
+    --accent: #7f85f5;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0; }
+html, body { height: 100%; overflow: hidden; background: var(--bg); }
+body {
+  font: 12px/1 system-ui, "Segoe UI", Ubuntu, sans-serif;
+  color: var(--fg);
+  user-select: none;
+  -webkit-user-select: none;
+}
+body.blurred { background: var(--bg-blur); color: var(--fg-dim); }
+#bar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 10px;
+  gap: 8px;
+  -webkit-app-region: drag;
+}
+.logo { width: 18px; height: 18px; flex: none; }
+#title { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+#badge {
+  flex: none;
+  min-width: 18px;
+  padding: 3px 5px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+.controls { display: flex; height: 100%; -webkit-app-region: no-drag; }
+.controls button {
+  width: 46px;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  display: grid;
+  place-items: center;
+  cursor: default;
+}
+.controls button:hover { background: var(--hover); }
+.controls button.close:hover { background: #c42b1c; color: #fff; }
+.controls svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1; }
+.controls svg.off { display: none; }

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Title bar</title>
+  <link rel="stylesheet" href="titlebar.css">
+</head>
+<body>
+  <header id="bar">
+    <img class="logo" src="../assets/icon.svg" alt="">
+    <span id="title">Microsoft Teams</span>
+    <span id="badge" hidden></span>
+    <nav class="controls">
+      <button data-action="minimize" title="Minimize" aria-label="Minimize">
+        <svg viewBox="0 0 10 10"><path d="M0 5.5h10"/></svg>
+      </button>
+      <button data-action="maximize" title="Maximize" aria-label="Maximize">
+        <svg id="icon-max" viewBox="0 0 10 10"><path d="M.5.5h9v9h-9z"/></svg>
+        <svg id="icon-restore" class="off" viewBox="0 0 10 10"><path d="M2.5 2.5h7v7h-7zM.5 7.5v-7h7"/></svg>
+      </button>
+      <button data-action="close" class="close" title="Close" aria-label="Close">
+        <svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0L0 10"/></svg>
+      </button>
+    </nav>
+  </header>
+  <script src="titlebar.js"></script>
+</body>
+</html>

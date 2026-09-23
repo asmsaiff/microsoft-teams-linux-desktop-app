@@ -1,0 +1,15 @@
+# Electron ships Chromium, so staying current is the main way this app gets
+# browser security fixes. Dependabot opens a PR when a new version is out.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      electron:
+        patterns: ['electron', 'electron-builder', '@electron/*']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
